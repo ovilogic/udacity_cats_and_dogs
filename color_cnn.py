@@ -69,6 +69,7 @@ class ColorCNN:
             layers.Conv2D(128, (3, 3), activation='relu'),
             layers.MaxPooling2D((2, 2)),
             layers.Dense(512, activation='relu'),
+            layers.Dropout(0.5),  # Dropout layer to reduce overfitting
             layers.Flatten(),
             layers.Dense(512, activation='relu'),
             layers.Dense(2, activation='softmax')  # For binary classification
@@ -106,5 +107,4 @@ preprocessed_validation_set = dogs.preprocess_data('./validation')
 # model.summary()
 
 trained_model = dogs.train_model(preprocessed_training_set, preprocessed_validation_set, epochs=30)
-
-# Next steps:
+ 
